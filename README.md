@@ -9,7 +9,7 @@
 
 ## Rules
 
-- You’ll notice the CMS payload contains the home page data in English and Portuguese, meaning the Front-end should be multi-lang, it should also be prepared to easily scale to new languages or new pages if necessary.
+- You'll notice the CMS payload contains the home page data in English and Portuguese, meaning the Front-end should be multi-lang, it should also be prepared to easily scale to new languages or new pages reflecting the content of the CSM payload.
 - All the images needed are available in the payload. (icons are in figma)
 - The page should be responsive, follow SEO best practices and be carefully crafted.
 - The intention of this test is to evaluate your ability to transpose a layout to code, we discourage copying/pasting code from music.ai. Feel free to code plain CSS or use any framework you feel familiar with.
