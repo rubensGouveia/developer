@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server/index.js & next dev --turbopack",
-    "build": "next build",
+    "dev": "concurrently \"node server/index.js\" \"next dev --turbopack\"" ,
+    "build": "concurrently \"node server/index.js\" \"next build\"",
     "start": "next start",
-    "next": "next dev",
-    "lint": "next lint --fix"
+    "lint": "next lint"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",
@@ -31,6 +30,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "eslint-plugin-tailwindcss": "^3.17.5",
