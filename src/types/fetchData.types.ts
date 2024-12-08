@@ -23,7 +23,7 @@ export interface ContentSection {
   description?: string;
   buttons?: ButtonType[];
   demo?: DemoType;
-  background?: Background;
+  background?: BackgroundType;
   brands?: Brand[];
   cards?: Card[];
 }
