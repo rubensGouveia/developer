@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({ menus }) => {
                 <Image src="brand.svg" width={105} height={22} alt="Company Logo" />
               </SheetTitle>
             </SheetHeader>
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between h-full">
             <NavigationMenu className="grow-0"  orientation="vertical">
               <NavigationMenuList className="mt-8 flex flex-col items-start gap-4" >
                 {menusToIterate.map((menu) => (
