@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ copyright, footerMenu, helpText,
             <div className="flex gap-6">
               {Object.entries(social).map((item) => (
                 <Link key={item[0]} href={item[1]} target="_blank">
-                  <Image src={`${item[0]}.svg`} width={24} height={24} alt={item[0]} />
+                  <Image src={`${item[0].toLowerCase()}.svg`} width={24} height={24} alt={item[0]} />
                 </Link>
               ))}
             </div>

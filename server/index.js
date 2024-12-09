@@ -38,3 +38,8 @@ const filterByLocale = (data, locale) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+setTimeout(()=>{ server.close(() => {
+  console.log('Server closed.');
+  process.exit(0);
+});},35000)
