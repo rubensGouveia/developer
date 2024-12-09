@@ -16,7 +16,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 }) => {
   return (
     <section
-      className="relative bg-black px-5 py-10 pt-16 text-white md:h-[700px] md:py-20 md:pt-32"
+      className="relative bg-black px-5 py-10 pt-20 text-white md:h-[700px] md:py-20 md:pt-32"
       style={{
         backgroundImage: `url(${background.url})`,
         backgroundSize: "cover",
