@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ copyright, footerMenu, helpText,
           <div className="flex flex-col gap-8 md:flex-row md:gap-12">
             {footerMenu.map(menu =>(<div key={menu.id} className="flex w-40 flex-col gap-5">
                 <h3 className="uppercase text-foreground opacity-40">{menu.title}</h3>
-                {menu?.dropdown?.map(item =>(<Link key={item.id} href={item.link} target={item.openNewWindow ? '_blank' : '_self'} className="text-foreground opacity-60 hover:opacity-80">{item.title}</Link>))}
+                {menu?.dropdown?.map(item =>(<Link key={item.title} href={item.link} target={item.openNewWindow ? '_blank' : '_self'} className="text-foreground opacity-60 hover:opacity-80">{item.title}</Link>))}
 
             </div>))}
           </div>
