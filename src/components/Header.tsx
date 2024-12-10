@@ -11,16 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import Link from "next/link";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
 
 interface HeaderProps {
@@ -91,52 +82,53 @@ export const Header: React.FC<HeaderProps> = ({ menus }) => {
                 <Image src="brand.svg" width={105} height={22} alt="Company Logo" />
               </SheetTitle>
             </SheetHeader>
-            <div className="flex flex-col justify-between h-full">
-            <NavigationMenu className="grow-0"  orientation="vertical">
-              <NavigationMenuList className="mt-8 flex flex-col items-start gap-4" >
-                {menusToIterate.map((menu) => (
-                  <NavigationMenuItem key={menu.id}>
-                    {menu.dropdown?.length ? (
-                      <>
-                        <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          {menu.dropdown.map((drop) => (
-                            <NavigationMenuLink key={drop.id} asChild>
-                              <Link
-                                href={drop.link}
-                                className="flex size-full select-none flex-col justify-end rounded-md to-muted  px-6 py-3 no-underline outline-none focus:shadow-md"
-                              >
-                                {drop.title}
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                        <Link
-                          href={menu.link || ""}
-                          target={menu.openNewWindow ? "_blank" : "_self"}
-                        >
-                          {menu.title}
-                        </Link>
-                      </NavigationMenuLink>
-                    )}
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-            {hasLogin && (
-          <div className="ml-4 pb-8">
-            <Link href={loginItem.link || ""} target={loginItem.openNewWindow ? "_blank" : "_self"}>
-              {loginItem.title}
-              <ArrowRight className="inline" />
-            </Link>
-          </div>
-        )}
-        
-
-        </div>
+            <div className="flex h-full flex-col justify-between ">
+              <NavigationMenu className="grow-0" orientation="vertical">
+                <NavigationMenuList className="mt-8 flex flex-col items-start gap-4">
+                  {menusToIterate.map((menu) => (
+                    <NavigationMenuItem key={`mobile-${menu.id}`}>
+                      {menu.dropdown?.length ? (
+                        <>
+                          <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
+                          <NavigationMenuContent>
+                            {menu.dropdown.map((drop) => (
+                              <NavigationMenuLink key={`mobile-${drop.id}`} asChild>
+                                <Link
+                                  href={drop.link}
+                                  className="flex size-full select-none flex-col justify-end rounded-md to-muted  px-6 py-3 no-underline outline-none focus:shadow-md"
+                                >
+                                  {drop.title}
+                                </Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                          <Link
+                            href={menu.link || ""}
+                            target={menu.openNewWindow ? "_blank" : "_self"}
+                          >
+                            {menu.title}
+                          </Link>
+                        </NavigationMenuLink>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+              {hasLogin && (
+                <div className="ml-4 pb-8">
+                  <Link
+                    href={loginItem.link || ""}
+                    target={loginItem.openNewWindow ? "_blank" : "_self"}
+                  >
+                    {loginItem.title}
+                    <ArrowRight className="inline" />
+                  </Link>
+                </div>
+              )}
+            </div>
           </SheetContent>
         </Sheet>
       </div>

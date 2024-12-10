@@ -10,7 +10,7 @@ import { Block } from "@/types/blocks";
 import { Metadata } from "next";
 
 type Props = {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string }>
 }
 function BlockRenderer(block: Block) {
  
@@ -32,9 +32,9 @@ function BlockRenderer(block: Block) {
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
-  const slug = (await params).slug ?? 'en'
+  const locale = (await params).locale ?? 'en'
  
-  const globals = await fetchGlobalData(slug);
+  const globals = await fetchGlobalData(locale);
   const {metadata} = globals
   return {
     title: metadata.metaTitle,
@@ -44,17 +44,17 @@ export async function generateMetadata(
 }
 export async function generateStaticParams() {
   const data = await fetchPageData('en')
-  const slugs =data[0].alternates.map(alternate => alternate.path.replace(/\//g,'')).filter(slug => !!slug)
+  const locales =data[0].alternates.map(alternate => alternate.path.replace(/\//g,'')).filter(locale => !!locale)
  
-  return slugs.map((slug) => ({
-    slug
+  return locales.map((locale) => ({
+    locale
   }))
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }>}) {
-  const {slug} = await params;
-  const data = await fetchPageData(slug);
-  const globals = await fetchGlobalData(slug);
+export default async function Page({ params }: { params: Promise<{ locale: string }>}) {
+  const {locale} = await params;
+  const data = await fetchPageData(locale);
+  const globals = await fetchGlobalData(locale);
   const {menu,footerMenu,copyright,social,helpText}= globals
   const blocks = data[0]?.contentSections
   if (!blocks) return null;
